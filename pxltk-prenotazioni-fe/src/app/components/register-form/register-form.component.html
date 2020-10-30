@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="login-dark">
+      <form method="post" style="color: rgb(255,255,255);background: radial-gradient(white, black 0%), #814545;opacity: 0.83;">
+        <h1>Benvenuto</h1>
+        <div class="row">
+          <input type="text" class="form-control" placeholder="Nome" [(ngModel)]="nome" name="nome" id="nome" />
+        </div>
+        <div class="row">
+          <input type="text" class="form-control" placeholder="Cognome" [(ngModel)]="cognome" name="cognome" id="cognome" />
+        </div>
+        <div class="row">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="dataModel" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <input type="text" class="form-control" placeholder="idRuolo" [(ngModel)]="idRuolo" name="idRuolo" id="idRuolo" />
+        </div>
+        <div class="row">
+          <input type="email" class="form-control" placeholder="Indirizzo Email" [(ngModel)]="email" name="email" id="email" />
+        </div>
+        <div class="row">
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" id="password" />
+        </div>
+        <div class="row">
+          <button (click)="register()" class="btn btn-primary btn-block" style="background: #efdb29;color: rgb(0,0,0);">Registrati</button>
+        </div>
+        <br>
+        <a class="forgot" routerLink="/login">Sei già registrato? Effettua il login</a>
+      </form>
+    </div>
+  </div>
+</div>
+

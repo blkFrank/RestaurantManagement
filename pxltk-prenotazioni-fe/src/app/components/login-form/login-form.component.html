@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+      <div class="login-dark">
+        <form method="post" style="color: rgb(255,255,255);background: radial-gradient(white, black 0%), #814545;opacity: 0.83;">
+            <h1>Benvenuto</h1>
+            <div class="form-group"><input class="form-control" type="email" [(ngModel)]="email" name="email" id="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" [(ngModel)]="password" name="password" id="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" (click)="login()"  style="background: #efdb29;color: rgb(0,0,0);">Log In</button></div>
+            <a class="forgot" routerLink="/register">Non sei registrato? Registrati</a>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+

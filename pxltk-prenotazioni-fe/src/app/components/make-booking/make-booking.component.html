@@ -1,0 +1,44 @@
+<div class="main-content">
+    <div class="container">
+    <br>
+    <br>
+      <div class="row">
+        <div class="col-2" *ngFor="let date of listDates">
+          <div *ngIf="date.valida; else elseBlock">
+            <div class="card text-center" (click)="settedDate = date"
+              [ngClass]="settedDate == date ? 'bg-secondary text-white' : ''">
+              <div class="card-body">
+                <p class="card-text">{{ DateToString(date.data) }}</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="card border-danger text-center text-danger">
+              <div class="card-body">
+                <p class="card-text">{{ DateToString(date.data) }}</p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <br>
+      <div>
+        <form class="form-signin">
+            <button (click)="addBook()" class="btn btn-primary">Aggiungi</button>
+        </form>
+      </div>
+      <br>
+      <div class="col">
+        <div *ngIf="validBook == true">
+          <div class="alert alert-success col-md-6 offset-md-3" role="bookYes">
+            Prenotazione riuscita
+          </div>
+        </div>
+        <div *ngIf="validBook == false">
+          <div class="alert alert-danger col-md-6 offset-md-3" role="bookNo">
+            Prenotazione Fallita
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

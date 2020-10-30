@@ -1,0 +1,98 @@
+<div class="main-content">
+  <div class="container">
+    <div *ngIf="listBooking.length > 0">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th width="10%">Id</th>
+            <th width="50%">Data</th>
+            <th width="20%">Modifica</th>
+            <th width="20%">Rimuovi</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let book of listBooking">
+          <td>
+            <p>{{ book.id }}</p>
+          </td>
+          <td>
+            <p>{{ DateMillsToString(book.data) }}</p>
+          </td>
+          <td>
+            <button
+              (click)="apriModificaPrenotazione(book)"
+              (click)="settedDate.data=book.data"
+              class="btn btn-primary btn-sm">
+              modifica
+            </button>
+          </td>
+          <td>
+            <button (click)="deletePrenotazione(book)" class="btn btn-primary btn-sm">
+              Rimuovi
+            </button>
+          </td>
+          
+        </tr>
+      </table>
+
+      <div *ngIf="isModifing == true">
+
+        <div class="container text-center">
+          <h1>Modifica prenotazione di {{DateMillsToString(settedBooking.data)}}</h1>
+          <div class="row">
+            <div class="col-2" *ngFor="let date of listDates">
+              <div *ngIf="date.valida; else elseBlock">
+                <div
+                  class="card text-center"
+                  (click)="settedDate = date"
+                  [ngClass]="settedDate == date ? 'bg-secondary text-white' : ''"
+                >
+                  <div class="card-body">
+                    <p class="card-text">{{ DateMillsToString(date.data) }}</p>
+                  </div>
+                </div>
+              </div>
+              <ng-template #elseBlock>
+                <div
+                  class="card border-danger text-center text-danger"
+                >
+                  <div class="card-body">
+                    <p class="card-text">{{ DateMillsToString(date.data) }}</p>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-signin">
+          <div class="row">
+            <button (click)="modificaPrenotazione()" class="btn btn-primary btn-block" >
+              modifica
+            </button>
+          </div>
+        </form>
+      </div>
+    
+    </div>
+    <div *ngIf="listBooking.length == 0">
+      <div class="alert alert-warning col-md-6 offset-md-3" role="alert">
+        Non hai fatto ancora prenotazioni...
+      </div>
+    </div>
+    <div *ngIf="validDelete == true">
+      <div class="alert alert-success col-md-6 offset-md-3" role="bookRemove">
+        Eliminazione effettuata
+      </div>
+    </div>
+    <div *ngIf="validModify == false">
+      <div class="alert alert-danger col-md-6 offset-md-3" role="alert">
+        Modifica non riuscita!
+      </div>
+    </div>
+    <div *ngIf="validModify == true">
+      <div class="alert alert-success col-md-6 offset-md-3" role="alert">
+        Modifica effettuata!
+      </div>
+    </div>
+  </div>
+</div>
